@@ -1,6 +1,7 @@
-
+import tkinter as tk
+import tkinter.messagebox 
 from cmath import sqrt
-from math import pow 
+from math import pow
 
 sum = 1
 subtraction = 2
@@ -9,7 +10,7 @@ multiplication = 4
 division = 5
 percentage = 6
 
-print("Operators avaible, please write one in the correct order : sum, subtraction, multiplication, division, percentage, power, sqaureroot")
+print("Operators avaible : sum, subtraction, multiplication, division, percentage, power, sqaureroot")
 op = input()
 if op == "sum":
     print("Choose a specific value for the first number to count the sum")
@@ -34,7 +35,10 @@ elif op == "division":
     a = float(input())
     print("Choose a specific value for the second number to count the division")
     b = float(input())
-    print("The result of this operation is", a/b)
+    if b == 0:
+        tkinter.messagebox.showerror(title="Division Error", message="You cant divise on 0")
+    if b != 0:
+        print("The result of this operation is", a/b)
 elif op == "percentage":
     print("Choose a specific value for the first number to count the percentage")
     a = float(input())
@@ -44,12 +48,13 @@ elif op == "percentage":
 elif op == "sqaureroot":
     print("Choose a specific value to count it's sqaureroot")
     a = float(input())
-    print("The sqaureroot of a is", sqrt(a))
+    if a < 0:
+        tkinter.messagebox.showerror(title="Sqaureroot Error", message="The number couldn't be less than 0")
+    if a >= 0:
+        print("The sqaureroot of a is", sqrt(a))
 elif op == "power":
     print("Choose a number to count it's power ")
     c=float(input())
     print("Choose a power")
     d=float(input())
     print("The result of this power operation is", pow(c, d))
-else:
-    print("You've entered an invalid expression, please try writing the operation in the right order.")
